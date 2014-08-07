@@ -1,0 +1,1 @@
+cmd_/Android/harvis_driver/ldd3_examples/misc-modules/hellop.ko.unsigned := ld -r -m elf_i386 -T /usr/src/kernels/2.6.32-431.el6.i686/scripts/module-common.lds --build-id -o /Android/harvis_driver/ldd3_examples/misc-modules/hellop.ko.unsigned /Android/harvis_driver/ldd3_examples/misc-modules/hellop.o /Android/harvis_driver/ldd3_examples/misc-modules/hellop.mod.o 

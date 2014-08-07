@@ -1,0 +1,1 @@
+cmd_/Android/harvis_driver/proc_fs/driver/procfs_hello.ko.unsigned := ld -r -m elf_i386 -T /usr/src/kernels/2.6.32-431.el6.i686/scripts/module-common.lds --build-id -o /Android/harvis_driver/proc_fs/driver/procfs_hello.ko.unsigned /Android/harvis_driver/proc_fs/driver/procfs_hello.o /Android/harvis_driver/proc_fs/driver/procfs_hello.mod.o 

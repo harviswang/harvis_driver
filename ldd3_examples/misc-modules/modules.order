@@ -1,0 +1,11 @@
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/hello.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/hellop.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/seq.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/jit.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/jiq.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/sleepy.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/complete.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/silly.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/faulty.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/kdatasize.ko
+kernel//Android/harvis_driver/ldd3_examples/misc-modules/kdataalign.ko
