@@ -5,4 +5,10 @@
 *.o
 *.order
 *.symvers
+*.unsigned.cmd
+*.o.cmd
+*.ko.cmd
+*.tmp_versions/
+*.c.swp
+*.h.swp
 

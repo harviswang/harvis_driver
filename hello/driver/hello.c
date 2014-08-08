@@ -253,6 +253,7 @@ static int __init hello_init(void)
 		goto cleanup;
 	}
 
+	/* create /sys/class/hello */
 	hello_class = class_create(THIS_MODULE, HELLO_DEVICE_CLASS_NAME);
 	if (IS_ERR(hello_class)) {
 		err = PTR_ERR(hello_class);
@@ -264,7 +265,7 @@ static int __init hello_init(void)
 	 * create /dev/hello
 	 * create /sys/class/hello/hello
 	 */
-	device = device_create(hello_class, NULL, devno, "%s", HELLO_DEVICE_FILE_NAME);
+	device = device_create(hello_class, NULL, devno, NULL, "%s", HELLO_DEVICE_FILE_NAME);
 	if (IS_ERR(device)) {
 		err = PTR_ERR(device);
 		printk(KERN_ALERT"Failed to create hello device.\n");

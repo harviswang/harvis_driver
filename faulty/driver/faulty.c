@@ -64,7 +64,7 @@ static int faulty_dev_setup(void)
 	if (IS_ERR(faulty_class)) 
 		goto destroy_cdev;
 
-	device = device_create(faulty_class, NULL, devno, "%s", "faulty");
+	device = device_create(faulty_class, NULL, devno, NULL, "%s", "faulty");
 	if (IS_ERR(device))
 		goto destroy_class;
 	
@@ -89,7 +89,12 @@ static int __init faulty_module_init(void)
 
 static void __exit faulty_module_exit(void)
 {
-	
+	if (faulty_class) {
+		device_destroy(faulty_class, devno);
+		class_destroy(faulty_class);
+	}
+
+	cdev_del(&faulty_dev);
 }
 
 module_init(faulty_module_init);
