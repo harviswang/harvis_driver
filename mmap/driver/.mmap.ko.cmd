@@ -1,1 +1,0 @@
-cmd_/Android/harvis_driver/mmap/driver/mmap.ko := arm-none-linux-gnueabi-ld -EL -r  -T /Android/linux-2.6.39-android_altus/scripts/module-common.lds   -o /Android/harvis_driver/mmap/driver/mmap.ko /Android/harvis_driver/mmap/driver/mmap.o /Android/harvis_driver/mmap/driver/mmap.mod.o

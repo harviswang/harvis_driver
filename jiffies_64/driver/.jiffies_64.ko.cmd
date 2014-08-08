@@ -1,1 +1,0 @@
-cmd_/Android/harvis_driver/jiffies_64/driver/jiffies_64.ko := arm-none-linux-gnueabi-ld -EL -r  -T /Android/linux-2.6.39-android_altus/scripts/module-common.lds   -o /Android/harvis_driver/jiffies_64/driver/jiffies_64.ko /Android/harvis_driver/jiffies_64/driver/jiffies_64.o /Android/harvis_driver/jiffies_64/driver/jiffies_64.mod.o

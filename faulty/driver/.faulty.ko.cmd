@@ -1,1 +1,0 @@
-cmd_/Android/harvis_driver/faulty/driver/faulty.ko := arm-none-linux-gnueabi-ld -EL -r  -T /Android/linux-2.6.39-android_altus/scripts/module-common.lds   -o /Android/harvis_driver/faulty/driver/faulty.ko /Android/harvis_driver/faulty/driver/faulty.o /Android/harvis_driver/faulty/driver/faulty.mod.o

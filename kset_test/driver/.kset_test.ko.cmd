@@ -1,1 +1,0 @@
-cmd_/Android/harvis_driver/kset_test/driver/kset_test.ko := arm-none-linux-gnueabi-ld -EL -r  -T /Android/linux-2.6.39-android_altus/scripts/module-common.lds   -o /Android/harvis_driver/kset_test/driver/kset_test.ko /Android/harvis_driver/kset_test/driver/kset_test.o /Android/harvis_driver/kset_test/driver/kset_test.mod.o

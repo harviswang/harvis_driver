@@ -1,1 +1,0 @@
-cmd_/Android/harvis_driver/simple_hello/driver/hello.ko := arm-none-linux-gnueabi-ld -EL -r  -T /Android/linux-2.6.39-android_altus/scripts/module-common.lds   -o /Android/harvis_driver/simple_hello/driver/hello.ko /Android/harvis_driver/simple_hello/driver/hello.o /Android/harvis_driver/simple_hello/driver/hello.mod.o
