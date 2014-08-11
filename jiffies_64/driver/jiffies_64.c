@@ -14,19 +14,9 @@
 #define JIFFIES_64_DEVICE_FILE_NAME  "jiffies_64"
 
 static unsigned long long value_of_jiffies_64;
-static struct timer_list tm;
 static dev_t devno;
 static struct class *jiffies_64_class;
 static struct cdev jiffies_64_dev;
-
-
-static void timer_func(unsigned long data)
-{
-	memset(&value_of_jiffies_64, 0, sizeof(value_of_jiffies_64));
-	value_of_jiffies_64 = get_jiffies_64();
-	printk(KERN_ALERT "jiffies_64 is %lld\n", value_of_jiffies_64);
-	mod_timer(&tm, jiffies + HZ);
-}
 
 static ssize_t jiffies_64_read(struct file *filp, char __user *buf, size_t size, loff_t *f_pos)
 {
@@ -74,11 +64,6 @@ static int __init jiffies_64_init(void)
 	int err = -1;
 	struct device *device = NULL;
 
-	init_timer(&tm);
-	tm.expires = jiffies + HZ;
-	tm.function = timer_func;
-	add_timer(&tm);
-
 	err = alloc_chrdev_region(&devno, 0, 1, JIFFIES_64_DEVICE_NODE_NAME);
 	if (err < 0) {
 		printk(KERN_ALERT"Failed to alloc char dev region.\n");
@@ -93,14 +78,14 @@ static int __init jiffies_64_init(void)
 		printk(KERN_ALERT"cdev_add failed.\n");
 		goto unregister;
 	}
-printk(KERN_ALERT"line = %d\n", __LINE__);
+
 	jiffies_64_class = class_create(THIS_MODULE, JIFFIES_64_DEVICE_CLASS_NAME);
 	if (IS_ERR(jiffies_64_class)) {
 		err = PTR_ERR(jiffies_64_class);
 		printk(KERN_ALERT"Failed to create jiffies_64 class\n");
 		goto destroy_cdev;
 	}
-printk(KERN_ALERT"line = %d\n", __LINE__);
+
 	device = device_create(jiffies_64_class, NULL, devno, NULL, "%s", JIFFIES_64_DEVICE_FILE_NAME);
 	if (IS_ERR(device)) {
 		err = PTR_ERR(device);
@@ -108,14 +93,14 @@ printk(KERN_ALERT"line = %d\n", __LINE__);
 		goto destroy_class;
 	}
 
-printk(KERN_ALERT"line = %d\n", __LINE__);
 	err = device_create_file(device, &dev_attr_val);
 	if (err < 0) {
 		printk(KERN_ALERT"Failed to create attribute val.\n");
 		goto destroy_device;
 	}
 
-printk(KERN_ALERT"line = %d\n", __LINE__);
+	return 0;
+
 destroy_device:
 	device_destroy(jiffies_64_class, devno);
 
@@ -134,10 +119,8 @@ fail:
 
 static void __exit jiffies_64_exit(void)
 {
-	del_timer(&tm);
-
 	if (jiffies_64_class) {
-/*		device_destroy(jiffies_64_class, devno);*/
+		device_destroy(jiffies_64_class, devno);
 		class_destroy(jiffies_64_class);
 	}
 

@@ -48,11 +48,13 @@ fail:
 
 static void __exit class_test_exit(void)
 {
+	if (harvis_device)
+		device_destroy(harvis_class, devno);
+
 	if (harvis_class) 
 		class_destroy(harvis_class);
 
-	if (harvis_device)
-		device_destroy(harvis_class, devno);
+	unregister_chrdev_region(devno, 1); /*oppostie of alloc_chrdev_region() */
 }
 module_init(class_test_init);
 module_exit(class_test_exit);

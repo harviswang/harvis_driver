@@ -95,6 +95,8 @@ static void __exit faulty_module_exit(void)
 	}
 
 	cdev_del(&faulty_dev);
+
+	unregister_chrdev_region(devno, 1);
 }
 
 module_init(faulty_module_init);
