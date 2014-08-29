@@ -1,5 +1,6 @@
 # Comment/uncomment the following line to disable/enable debugging
 #DEBUG = y
+#change CFLAGS to EXTRA_CFLAGS
 
 
 # Add your debugging flag (or not) to CFLAGS
@@ -9,8 +10,8 @@ else
   DEBFLAGS = -O2
 endif
 
-CFLAGS += $(DEBFLAGS)
-CFLAGS += -I$(LDDINC)
+EXTRA_CFLAGS += $(DEBFLAGS)
+EXTRA_CFLAGS += -I$(LDDINC)
 
 ifneq ($(KERNELRELEASE),)
 # call from kernel build system
